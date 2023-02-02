@@ -1,0 +1,53 @@
+# class
+class Queue:
+    """
+    This class is an ADT stck to use create the methods for a stack
+    """
+    MAXIMUM_CAPACITY = 10
+
+    # initialization
+    def __init__(self):
+        self.data = []
+        self.size = 0
+        self.front = -1
+
+    def __len__(self):
+        return self.size
+
+    def first(self):
+        return self.data[self.front]
+
+    def queue(self, num):
+        if self.is_full():
+            print("Queue Overflow")
+        self.size += 1
+        self.data.insert(0, num)
+
+    def dequeue(self):
+        if self.is_empty():
+            print("Queue empty")
+        self.size -= 1
+        return self.data.pop(0)
+
+    def is_empty(self):
+        if not self.data:
+            return True
+        return False
+
+    def is_full(self):
+        if self.size == self.MAXIMUM_CAPACITY:
+            return True
+        return False
+
+    def rev(self, text):
+        tem_str = ''
+        for i in str(text):
+            self.queue(i)
+        while not self.is_empty():
+            tem = self.dequeue()
+            tem_str += tem
+        return tem_str
+
+
+q = Queue()
+print(q.rev("hell"))
