@@ -1,0 +1,74 @@
+# class
+class Queue:
+    """
+    This class is an ADT stck to use create the methods for a stack
+    """
+    MAXIMUM_CAPACITY = 4
+
+    # initialization
+    def __init__(self):
+        self.data = []
+        self.top = -1
+        self.size = 0
+
+    def __len__(self):
+        return self.size
+
+    def queue(self, num):
+        if self.is_full():
+            print("Queue Overflow")
+        else:
+            self.top += 1
+            self.size += 1
+            self.data.insert(0, num)
+
+    def dequeue(self):
+        if not self.is_empty():
+            print("Queue empty")
+        else:
+            self.top -= 1
+            self.size -= 1
+            print(self.data[-1])
+            self.data.remove(self.data[-1])
+
+    def is_empty(self):
+        if self.data:
+            return True
+        else:
+            return False
+
+    def is_full(self):
+        if self.size == self.MAXIMUM_CAPACITY:
+            return True
+        else:
+            return False
+
+
+def execute():
+    s = Queue()
+    print("1.   Queue\n"
+          "2.   Dequeue\n"
+          "3.   Print all the elements\n"
+          "5.   Quit")
+
+    while True:
+        choice = int(input("Please enter your choice:"))
+        while choice not in range(1, 6):
+            print("invalid input")
+            choice = int(input("Please enter your choice:"))
+        if choice == 1:
+            num = input("Enter a number to add to queue")
+            s.queue(num)
+        elif choice == 2:
+            s.dequeue()
+
+        elif choice == 3:
+            print(s.data)
+        elif choice == 5:
+            break
+    input("press any key to exit")
+
+
+
+execute()
+
