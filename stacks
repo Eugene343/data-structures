@@ -15,7 +15,7 @@ class Stack:
         return self.size
 
     def peek(self):
-        if len(self.stack_array) > 1:
+        if len(self.stack_array) > 0:
             return self.stack_array[-1]
         else:
             return None
@@ -51,8 +51,8 @@ class Stack:
 
 def execute():
     s = Stack()
-    print("1.   Push\n"
-          "2.   Pop\n"
+    print("1.   Add number\n"
+          "2.   Remove number\n"
           "3.   Print the top element\n"
           "4.   Print all the elements\n"
           "5.   Quit")
@@ -63,16 +63,19 @@ def execute():
             print("invalid input")
             choice = int(input("Please enter your choice:"))
         if choice == 1:
-            num = input("Enter a number")
+            num = input("Enter a number to add to stack")
             s.push(num)
         elif choice == 2:
             s.pop()
+            print("The last number has been removed")
         elif choice == 3:
             print(s.peek())
+
         elif choice == 4:
             print(s.stack_array)
         elif choice == 5:
             break
+
 
 
 execute()
