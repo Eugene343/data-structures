@@ -1,0 +1,47 @@
+# # class
+# class Stack:
+#     """
+#     This class is an ADT stck to use create the methods for a stack
+#     """
+#     MAXIMUM_CAPACITY = 5
+#
+#     # initialization
+#     def __init__(self):
+#         self.stack_array = []
+#         self.top = -1
+#         self.size = 0
+#
+#     def __len__(self):
+#         return self.size
+#
+#     def push(self, num):
+#         self.top += 1
+#         self.size += 1
+#         self.stack_array.append(num)
+#
+#     def pop(self):
+#         if self.is_empty():
+#             print("Stack empty")
+#         else:
+#             self.top -= 1
+#             self.size -= 1
+#             return self.stack_array.pop()
+#
+#     def is_empty(self):
+#         if not self.stack_array:
+#             return True
+#         else:
+#             return False
+#
+#     def reverse(self, string):
+#         rev = ''
+#         for i in string:
+#             self.push(i)
+#         while not self.is_empty():
+#             tem = self.pop()
+#             rev += tem
+#         return rev
+#
+#
+# s = Stack()
+# print(s.reverse("sanitary"))
