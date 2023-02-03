@@ -1,49 +1,46 @@
-# class
 class Stack:
-    """
-    This class is an ADT stck to use create the methods for a stack
-    """
-    MAXIMUM_CAPACITY = 4
+    MAX = 5
 
-    # initialization
     def __init__(self):
-        self.stack_array = []
+        self.data = []
         self.top = -1
         self.size = 0
+        self.popped = []
 
-    def __len__(self):
+    def __len(self):
         return self.size
-
-    def peek(self):
-        if len(self.stack_array) > 0:
-            return self.stack_array[-1]
-        else:
-            return None
 
     def push(self, num):
         if self.is_full():
-            print("Stack Overflow")
+            print("Array Full")
         else:
             self.top += 1
             self.size += 1
-            self.stack_array.append(num)
+            self.data.append(num)
+            return self.top, self.size
 
     def pop(self):
         if self.is_empty():
-            print("Stack empty")
+            print("Array is empty")
         else:
             self.top -= 1
             self.size -= 1
-            self.stack_array.remove(self.stack_array[-1])
+            abt_tbp = (self.data[self.top])
+            self.data.remove(self.data[self.top])
+            self.popped.append(abt_tbp)
+            return abt_tbp
+
+    def peek(self):
+        return self.top
 
     def is_empty(self):
-        if self.size == 0:
+        if not self.data:
             return True
         else:
             return False
 
     def is_full(self):
-        if self.size == self.MAXIMUM_CAPACITY:
+        if not self.MAX:
             return True
         else:
             return False
@@ -51,11 +48,12 @@ class Stack:
 
 def execute():
     s = Stack()
-    print("1.   Add number\n"
-          "2.   Remove number\n"
+    print("1.   Push\n"
+          "2.   Pop\n"
           "3.   Print the top element\n"
           "4.   Print all the elements\n"
-          "5.   Quit")
+          "5.   Print all popped elements\n"  
+          "6.   Quit")
 
     while True:
         choice = int(input("Please enter your choice:"))
@@ -67,16 +65,13 @@ def execute():
             s.push(num)
         elif choice == 2:
             s.pop()
-            print("The last number has been removed")
         elif choice == 3:
             print(s.peek())
 
         elif choice == 4:
-            print(s.stack_array)
+            print(s.data)
         elif choice == 5:
+            print(s.popped)
+        elif choice == 6:
             break
     input("press any key to exit")
-
-
-
-execute()
