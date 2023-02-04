@@ -1,0 +1,24 @@
+from stack import Stack
+
+
+def check(exp):
+    s = Stack()
+    left = ["[", "{", "("]
+    right = ["]", "}", ")"]
+    for item in exp:
+        if item in left:
+            s.push(item)
+        elif item in right:
+            pos = right.index(item)
+            if not s.is_empty() and left[pos] == s.data[len(s)-1]:
+                s.pop()
+            else:
+                return "incorrect"
+    if len(s) == 0:
+        return "correct"
+    else:
+        return "incorrect"
+
+
+a = input("input a str:")
+print(check(a))
