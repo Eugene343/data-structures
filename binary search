@@ -1,0 +1,28 @@
+lts = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+
+def binary(lst, target):
+    first = 0
+    last = len(lst) -1
+    while first <= last:
+        mid_point = (first + last)//2
+        if lts[mid_point] == target:
+            return mid_point
+        elif lst[mid_point] < target:
+            first = mid_point + 1
+        else:
+            last = mid_point -1
+    return target
+
+
+result = binary(lts, 3)
+
+
+def verify(index):
+    if result is not None:
+        print("Number found at index ", index)
+    else:
+        print("Not found")
+
+
+verify(result)
