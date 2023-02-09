@@ -1,28 +1,40 @@
-lts = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-
-
-def binary(lst, target):
+# binary search
+def binary_search(lst, target):
+    """
+    list must be sorted
+    :param lst:
+    :param target:
+    :return target:
+    """
     first = 0
-    last = len(lst) -1
+    # deduct 1 because using list index
+    last = len(lst)-1
+    # if list not empty
     while first <= last:
-        mid_point = (first + last)//2
-        if lts[mid_point] == target:
+        mid_point = (first+last)//2
+        if lst[mid_point] == target:
             return mid_point
-        elif lst[mid_point] < target:
-            first = mid_point + 1
+        elif lst[mid_point] > target:
+            last = mid_point-1
         else:
-            last = mid_point -1
-    return target
+            first = mid_point+1
+    # after searching and nothing returned
+    return None
 
 
-result = binary(lts, 3)
-
-
+# displays results from search
 def verify(index):
-    if result is not None:
-        print("Number found at index ", index)
+    """
+    This method verifies results from binary search
+    :param index:
+    :return print statement:
+    """
+    # if returned value is an int
+    if index is not None:
+        print("Target found at index", index)
+    # if returned value is None
     else:
-        print("Not found")
+        print("Target not found")
 
-
-verify(result)
+lst = [1,2,3,4,5,6,7,8,9,10]
+verify(binary_search(lst, 9))
