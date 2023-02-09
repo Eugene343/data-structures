@@ -1,0 +1,26 @@
+lts = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+
+def recursion(lst, target):
+    while len(lst) == 0:
+        return False
+    midpoint = len(lst)//2
+    if lst[midpoint] == target:
+        return True
+    elif lst[midpoint] < target:
+        return recursion(lst[midpoint+1:], target)
+    else:
+        return recursion(lst[:midpoint+1], target)
+
+
+result = recursion(lts, 3)
+
+
+def verify(bol):
+    if result:
+        print("Index found")
+    else:
+        print("not found")
+
+
+verify(result)
