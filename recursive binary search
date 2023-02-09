@@ -1,0 +1,40 @@
+# recursive binary search
+def recursive_binary_search(lst, target):
+    """
+    list must be sorted
+    :param lst:
+    :param target:
+    :return bol:
+    """
+    # if list not empty
+    # base statement
+    if len(lst) == 0:
+        return False
+    else:
+        mid_point = len(lst)//2
+        if lst[mid_point] == target:
+            return True
+        elif lst[mid_point] > target:
+            # call the function with a new list staring from mid+1
+            return recursive_binary_search(lst[:mid_point-1], target)
+        elif lst[mid_point] < target:
+            return recursive_binary_search(lst[mid_point+1:], target)
+
+
+# displays results from search
+def verify(bol):
+    """
+    This method verifies results from recursive search
+    :param bol:
+    :return print statement:
+    """
+    # if True
+    if bol:
+        print("Target found")
+    # if False
+    else:
+        print("Target not found")
+
+lst = [1,2,3,4,5,6,7,8,9,10]
+verify(recursive_binary_search(lst, 9))
+
