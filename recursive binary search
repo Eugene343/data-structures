@@ -15,10 +15,10 @@ def recursive_binary_search(lst, target):
         if lst[mid_point] == target:
             return True
         elif lst[mid_point] > target:
-            # call the function with a new list staring from mid+1
-            return recursive_binary_search(lst[:mid_point-1], target)
+            # call the function with a new list staring from mid
+            return recursive_binary_search(lst[:mid_point], target)
         elif lst[mid_point] < target:
-            return recursive_binary_search(lst[mid_point+1:], target)
+            return recursive_binary_search(lst[mid_point:], target)
 
 
 # displays results from search
