@@ -34,18 +34,41 @@ class BinaryTree:
             arr += self.right.pre_order()
         return arr
 
+    def post_order(self):
+        arr = [self.left]
+        if self.left:
+            arr += self.left.post_order()
+        if self.right:
+            arr += (self.right.post_order())
+        arr += self.right
+        return arr
+
+    def in_order(self):
+        current = self
+        stack = []
+        while True:
+            if current is not None:
+                stack.append(current)
+                current = current.left
+            elif stack:
+                current = stack.pop()
+                print(current.root, end=" ")
+                current = current.right
+            else:
+                break
+
 
 if __name__ == '__main__':
     print('Binary tree')
-    root = BinaryTree('a')
-    root.add_left('b')
-    root.add_left('d')
+    root = BinaryTree(5)
+    root.add_left(30)
+    root.add_left(40)
 
-    root.add_right('c')
-    root.add_right('e')
-    root.add_right('f')
+    root.add_left(25)
+    root.add_right(2)
+    root.add_right(4)
 
 
-    print(root.pre_order())
+    print(root.in_order())
 
 
