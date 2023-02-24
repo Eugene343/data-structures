@@ -1,0 +1,51 @@
+class BinaryTree:
+    def __init__(self, data):
+        self.root = data
+        self.left = None
+        self.right = None
+
+    def set_root(self, data):
+        if self.root is None:
+            self.root = data
+
+    def get_root(self):
+        return self.root
+
+    def get_left(self):
+        return self.left
+
+    def add_left(self, data):
+        if self.left is None:
+            self.left = BinaryTree(data)
+        else:
+            self.left.add_left(data)
+
+    def add_right(self, data):
+        if self.right is None:
+            self.right = BinaryTree(data)
+        else:
+            self.right.add_right(data)
+
+    def pre_order(self):
+        arr = [self.root]
+        if self.left:
+            arr += self.left.pre_order()
+        if self.right:
+            arr += self.right.pre_order()
+        return arr
+
+
+if __name__ == '__main__':
+    print('Binary tree')
+    root = BinaryTree('a')
+    root.add_left('b')
+    root.add_left('d')
+
+    root.add_right('c')
+    root.add_right('e')
+    root.add_right('f')
+
+
+    print(root.pre_order())
+
+
