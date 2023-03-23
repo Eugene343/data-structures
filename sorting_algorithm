@@ -1,0 +1,86 @@
+def bubble_sort(unsorted_list):
+    indexing_length = len(unsorted_list)-1
+    is_sorted = False
+
+    while not is_sorted:
+        is_sorted = True
+        for i in range(0, indexing_length):
+            if unsorted_list[i] > unsorted_list[i+1]:
+                is_sorted = False
+                unsorted_list[i], unsorted_list[i+1] = unsorted_list[i+1], unsorted_list[i]
+    return unsorted_list
+
+
+print(bubble_sort([3, 5, 1, 7, 4, 5, 6, 7, 12, 3]))
+
+
+def selection_sort(unsorted_list):
+    list_length = len(unsorted_list)
+
+    for i in range(0, list_length):
+        min_value = i
+        for j in range(i+1, list_length):
+            if unsorted_list[min_value] > unsorted_list[j]:
+                min_value = j
+        if min_value != i:
+            unsorted_list[min_value], unsorted_list[i] = unsorted_list[i], unsorted_list[min_value]
+    return unsorted_list
+
+
+print(selection_sort([3, 5, 1, 7, 4, 5, 6, 7, 12, 3]))
+
+
+def insertion_sort(unsorted_list):
+    list_length = len(unsorted_list)
+
+    for i in range(0, list_length):
+        value_to_sort = unsorted_list[i]
+
+        while unsorted_list[i-1] > value_to_sort and i > 0:
+            unsorted_list[i], unsorted_list[i-1] = unsorted_list[i-1], unsorted_list[i]
+            i = i-1
+    return unsorted_list
+
+
+print(insertion_sort([3, 5, 1, 7, 4, 5, 6, 7, 12, 3]))
+
+
+def merge_sort(unsorted_list):
+
+    while len(unsorted_list) > 1:
+        mid_arr = len(unsorted_list)//2
+        left_arr = unsorted_list[:mid_arr]
+        right_arr = unsorted_list[mid_arr:]
+
+        # recursion
+        merge_sort(left_arr)
+        merge_sort(right_arr)
+
+        # merge
+        i = 0    # left arr idx
+        j = 0    # right arr idx
+        k = 0    # merge idx
+
+        while i < len(left_arr) and j < len(right_arr):
+            if left_arr[i] > right_arr[j]:
+                unsorted_list[k] = left_arr[i]
+                i += 1
+            else:
+                unsorted_list[k] = right_arr[j]
+                j += 1
+            k += 1
+            while i > len(left_arr):
+                unsorted_list[k] = left_arr[i]
+                i += 1
+                k += 1
+            while j > len(right_arr):
+                unsorted_list[k] = right_arr[j]
+                i += 1
+                k += 1
+
+
+merge_sort([3, 5, 1, 7, 4, 5, 6, 7, 12, 3])
+
+
+
+
