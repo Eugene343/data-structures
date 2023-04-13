@@ -31,7 +31,10 @@ class Stack:
             return abt_tbp
 
     def peek(self):
-        return self.top
+        if not self.data:
+            print("Stack is empty ")
+        else:
+            return self.data[-1]
 
     def is_empty(self):
         if not self.data:
