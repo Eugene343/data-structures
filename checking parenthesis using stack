@@ -22,3 +22,23 @@ def check(exp):
 
 a = input("input a str:")
 print(check(a))
+
+
+
+
+def is_match(exp):
+    left = ["[", "{", "("]
+    right = ["]", "}", ")"]
+    s = Stack()
+
+    for i in exp:
+        if i in left:
+            s.push(i)
+        elif i in right:
+            if s.is_empty():
+                return False
+            pos = right.index(i)
+            if not s.is_empty() and left[pos] == s.data[len(s) - 1]:
+                s.pop()
+
+    return s.is_empty()
