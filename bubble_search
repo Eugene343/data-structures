@@ -20,3 +20,18 @@ arr = [random.randint(1, 10000) for i in range(10000)]
 print(b(arr))
 end = time.time()
 print("b",end-start)
+
+
+-------improved version ----
+def bubble_sort(arr):
+    swap_flag = False
+
+    if len(arr) == 1:
+        return arr
+    for i in range(len(arr)):
+
+        for b in range(i, len(arr)):
+            if arr[i] > arr[b]:
+                swap_flag = True
+                arr[i], arr[b] = arr[b], arr[i]
+    return arr
